@@ -10,4 +10,40 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		  FROM BOARD
 	</select>
 
+	<select id="totalBoard" resultType="int">
+		SELECT COUNT(*)
+ 	      FROM BOARD
+	</select>
+	
+	<insert id="insertBoard" parameterType="dto.BoardDTO">
+		INSERT INTO BOARD
+		VALUES (BOARD_SEQ.NEXTVAL, #{author}, #{title}, #{content}, 0, #{ip}, SYSDATE)
+	</insert>
+	
+	<update id="updateBoardHit" parameterType="Long">
+		UPDATE BOARD
+		 SET HIT = HIT+1
+		WHERE NO = #{no}
+	</update>
+	
+	<select id="selectBoard" parameterType="Long" resultType="dto.BoardDTO">
+		SELECT NO, AUTHOR, TITLE, CONTENT, HIT, IP, POSTDATE
+		  FROM BOARD
+		 WHERE NO = #{no}
+	</select>
+	
+	<delete id="deleteBoard">
+		DELETE
+		  FROM BOARD
+		 WHERE NO = #{no}
+	</delete>
+	
+	
+	<select id="selectTopList" resultType="dto.BoardDTO">
+		SELECT a.NO, a.AUTHOR, a.TITLE, a.CONTENT, a.HIT, a.IP, a.POSTDATE
+		  FROM (SELECT 
+		          FROM BOARD
+		         ORDER BY HIT DESC) a
+		 WHERE ROWNUM = 1
+	</select>
 </mapper>

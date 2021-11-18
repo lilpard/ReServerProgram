@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="dao.reply">
+	
+	<insert id="insertReply" parameterType="dto.ReplyDTO">
+		INSERT INTO REPLY (no, author, content, ip, Board_NO, POSTDATE)
+		VALUES	(REPLY_SEQ.NEXTVAL, #{author}, #{content}, #{ip}, #{board_no}, SYSDATE)
+	</insert>
+	
+	<select id="selectReplyList" parameterType="Long" resultType="dto.ReplyDTO">
+		SELECT no, author, content, ip, Board_NO, POSTDATE
+		  FROM REPLY
+		 WHERE board_no = #{no}
+	</select>
+
+</mapper>

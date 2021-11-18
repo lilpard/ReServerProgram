@@ -10,7 +10,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
             <transactionManager type="JDBC"/>
             <dataSource type="POOLED">
                 <property name="driver" value="oracle.jdbc.driver.OracleDriver"/>
-                <property name="url" value="jdbc:oracle:thin:@localhost:1521:xe"/>
+                <property name="url" value="jdbc:oracle:thin:@127.0.0.1:1521:xe"/>
                 <property name="username" value="scott"/>
                 <property name="password" value="1111"/>
             </dataSource>
@@ -19,6 +19,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 	
 	<mappers>
         <mapper resource="dao/board.xml"/>
+        <mapper resource="dao/reply.xml"/>
 	</mappers>
 	
 </configuration>

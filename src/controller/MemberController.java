@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -8,20 +9,22 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import common.ModelAndView;
-import model.BoardService;
-
-
+import model.BoardDeleteService;
+import model.BoardInsertService;
+import model.BoardListService;
+import model.BoardViewService;
+import model.MemberService;
+import model.ReplyInsertService;
 
 @WebServlet("*.do")
-
-
-public class BoardController extends HttpServlet {
+public class MemberController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    public BoardController() {
+    public MemberController() {
         super();
     }
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
 		
@@ -30,9 +33,25 @@ public class BoardController extends HttpServlet {
 		String command = requestURI.substring(contextPath.length() + 1); 
 		
 		ModelAndView mav = null;
-		BoardService service =null;
+		MemberService service =null;
 		switch (command) {
-		
+		case "list.do":
+			service = new BoardListService();
+			break;
+		case "insertForm.do":
+			mav = new ModelAndView("views/insert.jsp", false);
+			break;
+		case "insert.do":
+			service = new BoardInsertService();
+			break;
+		case "selectView.do":
+			service = new BoardViewService();
+			break;
+		case "insertReply.do":
+			service = new ReplyInsertService();
+			break; 
+		case "delete.do":
+			service = new BoardDeleteService();
 		}
 		
 		if ( service != null) {
@@ -50,9 +69,11 @@ public class BoardController extends HttpServlet {
 				request.getRequestDispatcher(mav.getView()).forward(request, response);
 			}
 		}
-		
+	
 	}
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
 	}
+
 }
