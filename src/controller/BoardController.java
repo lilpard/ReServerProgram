@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import common.ModelAndView;
+import model.BoardService;
 
 
 
@@ -29,14 +30,14 @@ public class BoardController extends HttpServlet {
 		String command = requestURI.substring(contextPath.length() + 1); /*   student/list.do          */
 		
 		ModelAndView mav = null;
-		
+		BoardService service =null;
 		switch (command) {
 		
 		}
 		
-		if ( != null) {
+		if ( service != null) {
 			try {
-				mav = .execute(request, response);
+				mav = service.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

@@ -1,7 +1,5 @@
 package batch;
 
-import javax.servlet.ServletContextAttributeEvent;
-import javax.servlet.ServletContextAttributeListener;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
@@ -14,6 +12,8 @@ import org.quartz.Trigger;
 import org.quartz.TriggerBuilder;
 import org.quartz.impl.StdSchedulerFactory;
 
+
+//webListener로 만들어야 함. contextListener 인터페이스 상속
 @WebListener
 public class BoardListener implements ServletContextListener {
 
@@ -58,7 +58,7 @@ public class BoardListener implements ServletContextListener {
     		// 2) Trigger
     		Trigger trigger = TriggerBuilder.newTrigger()
     				.withIdentity("trigger", "group")
-    				.withSchedule(CronScheduleBuilder.cronSchedule(""))
+    				.withSchedule(CronScheduleBuilder.cronSchedule("0 0/1 * 1/1 * ? *"))
     				.build();
     		// 3) scheduler에 job, trigger 등록
     		scheduler.scheduleJob(job, trigger);

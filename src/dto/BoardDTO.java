@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class BoardDTO {
 	
-	private Long dno;
+	private Long no;
 	private String author;
 	private String title;
 	private String content;
@@ -13,11 +13,12 @@ public class BoardDTO {
 	private Date postdate;
 	
 	
-	public Long getDno() {
-		return dno;
+	
+	public Long getNo() {
+		return no;
 	}
-	public void setDno(Long dno) {
-		this.dno = dno;
+	public void setNo(Long no) {
+		this.no = no;
 	}
 	public String getAuthor() {
 		return author;
