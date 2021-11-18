@@ -25,9 +25,9 @@ public class BoardController extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
 		
-		String requestURI = request.getRequestURI();                     /*   /BATCH/student/list.do   */    
-		String contextPath = request.getContextPath();                   /*   /BATCH                   */
-		String command = requestURI.substring(contextPath.length() + 1); /*   student/list.do          */
+		String requestURI = request.getRequestURI();                       
+		String contextPath = request.getContextPath();                  
+		String command = requestURI.substring(contextPath.length() + 1); 
 		
 		ModelAndView mav = null;
 		BoardService service =null;
