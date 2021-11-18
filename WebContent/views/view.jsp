@@ -49,10 +49,12 @@
 			</c:if>
 			<c:if test="${not empty replyList}">
 				<c:forEach items="${replyList}" var="reply">
-					<td>${reply.content}</td>
-					<td>${reply.author}</td>
-					<td>${reply.ip}</td>
-					<td>${reply.postdate}</td>
+					<tr>
+						<td>${reply.content}</td>
+						<td>${reply.author}</td>
+						<td>${reply.ip}</td>
+						<td>${reply.postdate}</td>
+					</tr>
 				</c:forEach>
 			</c:if>
 		</table>
