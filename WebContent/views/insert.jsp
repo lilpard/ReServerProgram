@@ -18,7 +18,7 @@
 			<textarea rows="5" cols="30" name="content" placeholder="내용"></textarea><br><br>
 			<button>저장하기</button>
 			<input type="reset" value="다시작성">
-			<input type="button" value="목록 이동" onclick="location.href='list.notice'"> 
+			<input type="button" value="목록 이동" onclick="location.href='list.do'"> 
 		</form>
 	</div>
 	

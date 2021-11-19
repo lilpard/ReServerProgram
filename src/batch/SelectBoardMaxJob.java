@@ -16,8 +16,8 @@ public class SelectBoardMaxJob implements Job {
 		BoardDTO board = BoardDAO.getInstance().selectTopList();
 		
 		System.out.println("=== 최대 조회수 게시글 ===");
-		System.out.println("제목: " +board.getTitle().toString());
-		System.out.println("내용: " +board.getContent().toString());
+		System.out.println("제목: " + board.getTitle().toString());
+		System.out.println("내용: " + board.getContent().toString());
 		System.out.println("조회수: " + board.getHit());
 		
 	}
